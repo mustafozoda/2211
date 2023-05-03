@@ -341,19 +341,12 @@
 // }
 
 
-// const postCreate = async () => {
-//     try {
-//         const { data } = await axios.get(`url`)
-//     } catch (error) {
-//     }
-// }
 
 
-// const postCreate = async (editUser) => {
-//     try {
-//         const { data } = await axios.post(`url`, editUser)
-//     } catch (error) {
-//     }
+
+
+// let data = {
+//     title: 2211,
 // }
 
 
@@ -367,10 +360,25 @@
 // }
 
 
-// const postCreate = async (id, editUser) => {
+
+// let api = "https://63d14a1e3f08e4a8ff94b1a5.mockapi.io/department"
+
+// //delete
+// let btnDel = document.createElement('button')
+// btnDel.innerHTML = 'delete'
+// btnDel.onclick = () => {
+//     deleteUser(e.id)
+// }
+
+
+
+// //function to delete
+// async function deleteUser(id) {
 //     try {
-//         const { data } = await axios.post(`url/${id}`, editUser)
+//         const { data } = await axios.delete(${ api } / ${ id })
+//         getData()
 //     } catch (error) {
+//         console.log(error);
 //     }
 // }
 
@@ -384,11 +392,126 @@
 //     }
 // }
 
-const postDelete = async (id) => {
-    try {
-        const { data } = await axios.delete(`url/${id}`);
-        // handle success response
-    } catch (error) {
-        // handle error response
+// const postDelete = async (id) => {
+//     try {
+//         const { data } = await axios.delete(`url/${id}`);
+//     } catch (error) {
+//     }
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let api = 'https://63d14a1e3f08e4a8ff94b1a5.mockapi.io/department'
+let box = document.querySelector('.box')
+let form1 = document.querySelector('.form1')
+
+
+//add 
+form1.onsubmit = (event) => {
+    event.preventDefault()
+    let user = {
+        title: form1['text'].value,
+        isCompleted: false,
     }
-};
+    post(user)
+    form1.reset()
+}
+
+
+
+//function to Add
+let post = async (user) => {
+    try {
+        const { data } = await axios.post(api, user)
+        getData()
+        // console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//function to edit
+let putEdit = async (id, user) => {
+    try {
+        const { data } = await axios.post(`${ api }/${ id }, user`)
+        getData()
+        // console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//function to delete
+async function deleteUser(id) {
+    try {
+        const { data } = await axios.delete(`${api}/${id}`)
+        getData()
+        // console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+//function to get data
+async function getData() {
+    try {
+        let res = await axios.get(api)
+        getUser(res.data)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+function getUser(data) {
+    // console.log(data);
+    box.innerHTML = ''
+    data.forEach((e) => {
+        let h1 = document.createElement('h1')
+        h1.innerHTML = e.title
+
+
+        //edit*
+        let btnEdit = document.createElement('button')
+        btnEdit.innerHTML = 'Edit'
+        btnEdit.onclick = () => {
+            const editUser = {
+                title: h1.innerHTML,
+            }
+            putEdit(e.id, editUser)
+        }
+        //delete
+        let btnDel = document.createElement('button')
+        btnDel.innerHTML = 'delete'
+        btnDel.onclick = () => {
+            deleteUser(e.id)
+        }
+
+        box.appendChild(h1)
+        box.appendChild(btnEdit)
+        box.appendChild(btnDel)
+    })
+}
+getData()
