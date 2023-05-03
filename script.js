@@ -144,14 +144,251 @@
 
 
 
-async function fetchData() {
-    try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-        const data = await response.json();
-        console.log(data);
-    } catch (error) {
-        console.error(error);
-    }
-}
+// async function fetchData() {
+//     try {
+//         const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+//         const data = await response.json();
+//         console.log(data);
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
 
-fetchData();
+// fetchData();
+
+
+
+
+
+
+
+
+
+// // Define the endpoint for the API
+// const endpoint = 'https://example.com/api/chartdata';
+
+// // Make a GET request to the API using fetch()
+// fetch(endpoint)
+//     .then(response => {
+//         // Check if the response was successful
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! status: ${response.status}`);
+//         }
+//         // Parse the JSON response and extract the chart data
+//         return response.json();
+//     })
+//     .then(data => {
+//         // Use the charting library to display the data
+//         const chart = new Chart('chart-container', {
+//             type: 'line',
+//             data: {
+//                 labels: data.labels,
+//                 datasets: [{
+//                     label: 'Chart Data',
+//                     data: data.values,
+//                     borderColor: 'blue',
+//                     fill: false
+//                 }]
+//             },
+//             options: {
+//                 title: {
+//                     text: 'Chart Title'
+//                 }
+//             }
+//         });
+//     })
+//     .catch(error => {
+//         console.error(error);
+//     });
+
+
+
+
+
+
+// GET https://api.example.com/users
+
+
+
+// {
+//     "users": [
+//         {
+//             "id": 1,
+//             "name": "John Doe",
+//             "email": "john.doe@example.com"
+//         },
+//         {
+//             "id": 2,
+//             "name": "Jane Smith",
+//             "email": "jane.smith@example.com"
+//         }
+//     ]
+// }
+
+
+
+
+// fetch('https://jsonplaceholder.typicode.com/users/1')
+//     .then(response => response.json())
+//     .then(data => console.log(data.name)); // Output: Leanne Graham
+
+
+
+
+// fetch('https://api.example.com/users/1')
+//     .then(response => response.json())
+//     .then(data => console.log(data.name)); // Output: Leanne Graham
+
+
+
+
+
+
+
+
+// fetch('https://api.example.com/data')
+//     .then(response => response.json())
+//     .then(data => console.log(data))
+//     .catch(error => console.error(error));
+
+
+// const getUsers = async () => {
+//     try {
+//         const response = await fetch("“);
+//     const data = await response.json();
+//         console.log(data);
+//     }
+//     catch (error) {
+//         console.log(error)
+//     }
+
+
+
+// const getUsers = async () => {
+//     try {
+//         const response = await fetch("");
+//         const data = await response.json();
+//         console.log(data);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
+
+
+
+// const postUser = async (user) => {
+//     try {
+//         const response = await fetch(“...“,
+//             {
+//                 method: "POST",
+//                 headers: {
+//                     Accept: "application/json",
+//                     "Content-Type": "application/json",
+//                 },
+//                 body: JSON.stringify(user),
+//             });
+//     }
+//     catch (error) {
+//         console.log(error)
+//     }
+
+
+// const postUser = async (user) => {
+//     try {
+//         const response = await fetch("...",
+//             {
+//                 method: "POST",
+//                 headers: {
+//                     Accept: "application/json",
+//                     "Content-Type": "application/json",
+//                 },
+//                 body: JSON.stringify(user),
+//             });
+//     }
+//     catch (error) {
+//         console.log(error)
+//     }
+// }
+
+
+// const putUser = async (id, edituser) => {
+//     try {
+//         const response = await fetch("...",
+//             {
+//                 method: "PUT",
+//                 headers: {
+//                     Accept: "application/json",
+//                     "Content-Type": "application/json",
+//                 },
+//                 body: JSON.stringify(edituser),
+//             });
+//     }
+//     catch (error) {
+//         console.log(error)
+//     }
+// }
+
+// const deleteUser = async (id) => {
+//     try {
+//         const response = await fetch("...",
+//             {
+//                 method: "DELETE",
+//             });
+//     }
+//     catch (error) {
+//         console.log(error)
+//     }
+// }
+
+
+// const postCreate = async () => {
+//     try {
+//         const { data } = await axios.get(`url`)
+//     } catch (error) {
+//     }
+// }
+
+
+// const postCreate = async (editUser) => {
+//     try {
+//         const { data } = await axios.post(`url`, editUser)
+//     } catch (error) {
+//     }
+// }
+
+
+
+
+// const postCreate = async (editUser) => {
+//     try {
+//         const { data } = await axios.post(`url`, editUser)
+//     } catch (error) {
+//     }
+// }
+
+
+// const postCreate = async (id, editUser) => {
+//     try {
+//         const { data } = await axios.post(`url/${id}`, editUser)
+//     } catch (error) {
+//     }
+// }
+
+
+// const putUpdate = async (id, editUser) => {
+//     try {
+//         const { data } = await axios.put(`url/${id}`, editUser);
+//         // handle response data
+//     } catch (error) {
+//         // handle error
+//     }
+// }
+
+const postDelete = async (id) => {
+    try {
+        const { data } = await axios.delete(`url/${id}`);
+        // handle success response
+    } catch (error) {
+        // handle error response
+    }
+};
